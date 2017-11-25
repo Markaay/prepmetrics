@@ -1,6 +1,0 @@
-2017-11-25 11:08:34,468 - DEBUG - httpErrorHandling - start app: errorhandling
-2017-11-25 11:08:35,008 - ERROR - httpErrorHandling - [Errno 61] Connection refused
-2017-11-25 11:08:35,010 - DEBUG - httpErrorHandling - end app: errorhandling
-2017-11-25 11:11:34,577 - DEBUG - httpErrorHandling - start app: errorhandling
-2017-11-25 11:11:35,002 - ERROR - httpErrorHandling - [Errno 61] Connection refused
-2017-11-25 11:11:35,004 - DEBUG - httpErrorHandling - end app: errorhandling

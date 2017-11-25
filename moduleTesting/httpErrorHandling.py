@@ -3,7 +3,7 @@ import json
 import prepLogger
 
 #prepApp
-app_name = "httpErrorHandling.py"
+app_name = "httpErrorHandling"
 py_version = "2.7"
 creator = "prepmetrics"
 
