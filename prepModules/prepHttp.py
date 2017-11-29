@@ -1,18 +1,24 @@
+"""top docstring.
+end of discription.
+"""
 import urllib2
 import json
-from prepLogger import appLogger
+from prepModules.preplogger import applogger
 
 #Get JSON
-def httpJson(app, http, timeoutSeconds):
+def httpjson(app, http, timeoutseconds):
+    """function that handles all json request in python.
+    end of discription.
+    """
     #create logger based on app name
-    logger = appLogger(app)
+    logger = applogger(app)
     #the complete unescaped url to crawl
     request_uri = urllib2.Request(http)
     try:
-        api_response = urllib2.urlopen(request_uri, timeout=timeoutSeconds)
+        api_response = urllib2.urlopen(request_uri, timeout=timeoutseconds)
         response_string = api_response.read().decode('utf-8')
         json_data = json.loads(response_string)
-        logger.debug('data collected: '+ 'request_type')
+        logger.debug('data collected: '+ 'json')
         return json_data
     except urllib2.HTTPError, err:
         if err.code == 404:
