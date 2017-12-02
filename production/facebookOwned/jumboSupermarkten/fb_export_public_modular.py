@@ -1,6 +1,4 @@
-"""jumbo facebook owned public data app.
-end of discription.
-"""
+"""jumbo facebook owned public data app"""
 #dependencies
 import sys
 sys.path.append('../../../prepModules')
@@ -17,19 +15,11 @@ def fbownedpublicapp():
     """python function that exports all public owned data.
     end of discription.
     """
-
     #Open access_data.json file
     accessdata = loadjsonfile(APP_NAME, "access_data.json")
     #Database connection info
     connectiondata = loadjsonfile(APP_NAME, "connection_data.json")
 
-    #cache general variables
-    contextdata = {
-        "current_date_timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "current_date": datetime.now(),
-        "last_week_date": (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d %H:%M:%S"),
-        "yesterday_date": (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
-    }
     #pages to scrape
     pages_to_scrape = ["jumbosupermarkten", "PLUSsupermarkt", "EMTESUPERMARKTEN", "Dirksupermarkten", "CoopSupermarkten", "lidlnederland", "JanLindersSupermarkten", "DEENSupermarkten", "albertheijn"]
     page_loop = 0
@@ -44,7 +34,7 @@ def fbownedpublicapp():
         requestjson = httpjson(APP_NAME, constructedrequest, 30, connectiondata)
 
         #procus complete public facebook data tables
-        fb_ownedpubliccomplete(APP_NAME, requestjson, contextdata, connectiondata, 10)
+        fb_ownedpubliccomplete(APP_NAME, requestjson, connectiondata, 10)
 
         #increment top page loop
         page_loop = page_loop+1

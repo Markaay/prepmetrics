@@ -89,7 +89,7 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
     return apmdata
 
 
-def fb_ownedpubliccomplete(app, pagedata, contextdata, connectiondata, ipmpostamount):
+def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
     from datetime import datetime
     from datetime import timedelta
     from prepModules.prepdestinations import mysqldestination
