@@ -90,8 +90,20 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
 
 
 def fb_ownedpubliccomplete(app, pagedata, contextdata, connectiondata, ipmpostamount):
+    from datetime import datetime
+    from datetime import timedelta
     from prepModules.prepdestinations import mysqldestination
     logger = applogger(app)
+
+
+    #cache general variables
+    contextdata = {
+        "current_date_timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "current_date": datetime.now(),
+        "last_week_date": (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d %H:%M:%S"),
+        "yesterday_date": (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
+    }
+
     #variables for cumulative calculations
     post_like_total = 0
     post_comment_total = 0

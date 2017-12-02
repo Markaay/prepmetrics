@@ -1,8 +1,7 @@
 """top docstring.
 end of discription.
 """
-import json
-import requests
+
 import sys
 sys.path.append('../../../prepModules')
 from prepfacebookowned import fb_gettoken

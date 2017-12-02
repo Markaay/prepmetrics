@@ -2,15 +2,13 @@
 end of discription.
 """
 #dependencies
-import json
-from datetime import datetime
-from datetime import timedelta
 import sys
 sys.path.append('../../../prepModules')
 from prepfacebookowned import fb_httpbuilderpublic, fb_ownedpubliccomplete
 from prephttp import httpjson
+from preploadfile import loadjsonfile
 
-#prepApp
+#prepapp
 APP_NAME = "jumboSocialOwned"
 PY_VERSION = "2.7"
 CREATOR = "prepmetrics"
@@ -21,20 +19,10 @@ def fbownedpublicapp():
     """
 
     #Open access_data.json file
-    with open('access_data.json', 'r') as accessinformation:
-        fb_data = json.load(accessinformation)
-    fb_access_token = fb_data["app_access_token"]
-
+    accessdata = loadjsonfile(APP_NAME, "access_data.json")
     #Database connection info
-    connectiondata = {
-        "con_ip": "95.85.56.92",
-        "con_db": "prepmetrics_db",
-        "con_user": "prepper",
-        "con_pass": "passa1sdE!fs0!metrics",
-        "page_table": "fb_pagedata",
-        "post_table": "fb_posts",
-        "comment_table": "fb_comments"
-    }
+    connectiondata = loadjsonfile(APP_NAME, "connection_data.json")
+
     #cache general variables
     contextdata = {
         "current_date_timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -49,7 +37,7 @@ def fbownedpublicapp():
     #loop through pages in array
     for page in pages_to_scrape:
         #construct request for page data
-        constructedrequest = fb_httpbuilderpublic(APP_NAME, pages_to_scrape[page_loop], 16, 1500, 6000, fb_access_token)
+        constructedrequest = fb_httpbuilderpublic(APP_NAME, pages_to_scrape[page_loop], 16, 1500, 6000, accessdata["fb_access_token"])
         print(constructedrequest)
 
         #retrieve page data json from api
