@@ -3,7 +3,8 @@ end of discription.
 """
 
 import json
-from prepModules.preplogger import applogger
+sys.path.append('../prepModules')
+from preplogger import applogger
 
 def loadjsonfile(app, jsonpath):
     """function that reads the json path and returns it to the app"""
