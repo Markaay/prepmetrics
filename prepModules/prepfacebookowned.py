@@ -90,11 +90,10 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
 
 
 def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
+    """export complete social owned stack page,post and comments"""
     from datetime import datetime
     from datetime import timedelta
     from prepModules.prepdestinations import mysqldestination
-    logger = applogger(app)
-
 
     #cache general variables
     contextdata = {
@@ -225,3 +224,87 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
 
     #Setup database connection to export page data
     mysqldestination(app, connectiondata, add_pagedata, page_obj)
+
+def fb_getpageidsmysql(app, connectiondata, querylimit):
+    """retrieve an list of all unique ids in facebook owned page table"""
+    import MySQLdb as mdb
+    logger = applogger(app)
+
+    fb_pages = None
+    con = mdb.connect(connectiondata["con_ip"],
+                      connectiondata["con_user"],
+                      connectiondata["con_pass"],
+                      connectiondata["con_db"])
+    with con:
+        cur = con.cursor()
+        query = ("SELECT distinct page_id FROM %s LIMIT %s")
+        tablepath = connectiondata["db_name"]+"."+connectiondata["page_table"]
+
+        que = cur.execute(query, (tablepath, querylimit))
+        result = cur.fetchall()
+        fb_pages = result
+        cur.close()
+    con.close()
+    logger.debug('FB Page ids retrieved from '+ connectiondata["page_table"])
+    return fb_pages
+
+
+def fb_getcommentsentimentmsql(app, pageids, connectiondata, sentapidata):
+    """get sentiment data from comments in a mysql database"""
+    from datetime import datetime
+    from datetime import timedelta
+    import MySQLdb as mdb
+    from prepModules.prepdestinations import mysqldestination
+    from prepModules.prepsentiment import getstringsentiment
+
+    #cache general variables
+    current_date = datetime.now()
+    yesterday_date = (current_date - timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
+
+
+    comment_data_set = None
+    con = mdb.connect(connectiondata["con_ip"],
+                      connectiondata["con_user"],
+                      connectiondata["con_pass"],
+                      connectiondata["con_db"])
+    with con:
+        cur = con.cursor()
+        query = ("SELECT scrape_date,page_id,post_id,comment_id,comment_created_time,comment_message,comment_like_count,comment_comment_count FROM fb_comments "
+                 "WHERE page_id = %s AND scrape_date BETWEEN %s AND %s")
+        query_page_id = pageids[0]
+        start = yesterday_date[:10]+" 00:00:00"
+        end = yesterday_date[:10]+" 23:59:59"
+
+        que = cur.execute(query, (query_page_id,start, end))
+
+        result = cur.fetchall()
+        comment_data_set = result
+        for row in result:
+            print(row)
+        cur.close()
+    con.close()
+
+    for row in comment_data_set:
+        print(row[5])
+        if len(row[5]) > 20:
+            request_response = getstringsentiment(app, sentapidata, row[5])
+            comment_sentiment_data = {
+                "scrape_date": row[0].strftime("%Y-%m-%d %H:%M:%S"),
+                "page_id":row[1],
+                "post_id":row[2],
+                "comment_id":row[3],
+                "comment_created_time": row[4].strftime("%Y-%m-%d %H:%M:%S"),
+                "comment_message": row[5],
+                "comment_like_count":row[6],
+                "comment_comment_count":row[7],
+                "comment_sent_label": request_response["label"],
+                "comment_positivity": request_response["probability"]["pos"],
+                "comment_negativity": request_response["probability"]["neg"],
+                "comment_neutrality": request_response["probability"]["neutral"]
+            }
+            add_comment_sentiment = ("INSERT INTO fb_comment_sentiment "
+                                     "(scrape_date, page_id, post_id, comment_id, comment_created_time, comment_message, comment_like_count, comment_comment_count,comment_sent_label,comment_positivity,comment_negativity,comment_neutrality)"
+                                     "VALUES (%(scrape_date)s, %(page_id)s, %(post_id)s, %(comment_id)s, %(comment_created_time)s, %(comment_message)s, %(comment_like_count)s, %(comment_comment_count)s, %(comment_sent_label)s, %(comment_positivity)s, %(comment_negativity)s, %(comment_neutrality)s)")
+
+            #Setup database connection and send data to mysql
+            mysqldestination(app, connectiondata, add_comment_sentiment, comment_sentiment_data)

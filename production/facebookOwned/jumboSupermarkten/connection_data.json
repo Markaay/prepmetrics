@@ -1,8 +1,9 @@
 {
-    "con_ip": "95.85.56.92",
-    "con_db": "prepmetrics_db",
+    "con_ip": "198.199.126.183",
+    "con_db": "admin_prepmetricsdb",
     "con_user": "prepper",
-    "con_pass": "passa1sdE!fs0!metrics",
+    "con_pass": "VMaiQAKSRP",
+    "db_name": "admin_prepmetricsdb",
     "page_table": "fb_pagedata",
     "post_table": "fb_posts",
     "comment_table": "fb_comments"

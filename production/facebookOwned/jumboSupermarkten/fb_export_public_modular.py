@@ -12,22 +12,23 @@ PY_VERSION = "2.7"
 CREATOR = "prepmetrics"
 
 def fbownedpublicapp():
-    """python function that exports all public owned data.
-    end of discription.
-    """
+    """python function that exports all public owned data"""
     #Open access_data.json file
     accessdata = loadjsonfile(APP_NAME, "access_data.json")
     #Database connection info
     connectiondata = loadjsonfile(APP_NAME, "connection_data.json")
 
     #pages to scrape
-    pages_to_scrape = ["jumbosupermarkten", "PLUSsupermarkt", "EMTESUPERMARKTEN", "Dirksupermarkten", "CoopSupermarkten", "lidlnederland", "JanLindersSupermarkten", "DEENSupermarkten", "albertheijn"]
+    pages_to_scrape = ["jumbosupermarkten", "PLUSsupermarkt", "EMTESUPERMARKTEN",
+                       "Dirksupermarkten", "CoopSupermarkten", "lidlnederland",
+                       "JanLindersSupermarkten", "DEENSupermarkten", "albertheijn"]
     page_loop = 0
 
     #loop through pages in array
     for page in pages_to_scrape:
         #construct request for page data
-        constructedrequest = fb_httpbuilderpublic(APP_NAME, pages_to_scrape[page_loop], 16, 1500, 6000, accessdata["fb_access_token"])
+        constructedrequest = fb_httpbuilderpublic(APP_NAME, pages_to_scrape[page_loop],
+                                                  16, 1500, 6000, accessdata["fb_access_token"])
         print(constructedrequest)
 
         #retrieve page data json from api
