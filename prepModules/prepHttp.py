@@ -1,15 +1,11 @@
-"""top docstring.
-end of discription.
-"""
-import urllib2
-import json
-from prepModules.preplogger import applogger
-
+"""functions that retrieve info from http sources"""
 #Get JSON
 def httpjson(app, http, timeoutseconds):
-    """function that handles all json request in python.
-    end of discription.
-    """
+    """function that handles all json request in python"""
+    import urllib2
+    import json
+    from prepmetrics.prepModules.preplogger import applogger
+
     #create logger based on app name
     logger = applogger(app)
     #the complete unescaped url to crawl

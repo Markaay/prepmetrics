@@ -1,13 +1,10 @@
-"""top docstring.
-end of discription.
-"""
-from prepModules.preplogger import applogger
+"""all functions for retrieving owned facebook data through the facebook graph api"""
+#from prepModules.preplogger import applogger
 #classes for public facebook owned data and private owned page data
 
 def fb_httpbuilderpublic(app, pageid, postlimit, commentlimit, likelimit, accesstoken):
-    """function that forms the hhtp request url based on input.
-    end of discription.
-    """
+    """function that forms the hhtp request url based on input"""
+    from prepmetrics.prepModules.preplogger import applogger
     logger = applogger(app)
     #constructor for exporting public facebook graph api data
     api_base = "https://graph.facebook.com"
@@ -22,11 +19,10 @@ def fb_httpbuilderpublic(app, pageid, postlimit, commentlimit, likelimit, access
     return api_construct
 
 def fb_gettoken(app, app_id, app_secret, data_location):
-    """function to retrieve new app access token based on app id and app secret.
-    end of discription.
-    """
+    """function to retrieve new app access token based on app id and app secret"""
     import json
     import requests
+    from prepmetrics.prepModules.preplogger import applogger
     logger = applogger(app)
     #construct request data
     payload = {
@@ -50,11 +46,10 @@ def fb_gettoken(app, app_id, app_secret, data_location):
         logger.debug(data_location + " data overwritten with fresh token!")
 
 def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
-    """function that retrieves amp data from given msql database.
-    end of discription.
-    """
+    """function that retrieves amp data from given msql database"""
     #import msqldb if not loaded yet
     import MySQLdb as mdb
+    from prepmetrics.prepModules.preplogger import applogger
     logger = applogger(app)
     #object to return after data is loaded
     apmdata = {
@@ -93,8 +88,10 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
     """export complete social owned stack page,post and comments"""
     from datetime import datetime
     from datetime import timedelta
-    from prepModules.prepdestinations import mysqldestination
+    from prepmetrics.prepModules.preplogger import applogger
+    from prepmetrics.prepModules.prepdestinations import mysqldestination
 
+    logger = applogger(app)
     #cache general variables
     contextdata = {
         "current_date_timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -109,7 +106,7 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
     post_share_total = 0
     post_loop = 0
     #start loop through page posts
-    for posts in pagedata["posts"]["data"]:
+    for _ in pagedata["posts"]["data"]:
         #only include pages which creation date is equal to the date 7 days ago (last_week_date)
         if pagedata["posts"]["data"][post_loop]["created_time"][:10] == contextdata["last_week_date"][:10]:
             post_message = ""
@@ -152,7 +149,7 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
                 comment_loop = 0
                 #doublecheck if comment key is in post comment json
                 if "comments" in pagedata["posts"]["data"][post_loop]:
-                    for comments in pagedata["posts"]["data"][post_loop]["comments"]["data"]:
+                    for _ in pagedata["posts"]["data"][post_loop]["comments"]["data"]:
                         #comment data to export
                         post_comment_obj = {
                             "comment_table": connectiondata["comment_table"],
@@ -192,7 +189,6 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
             post_like_total = post_like_total + post_comments_base
             post_comment_total = post_comment_total + post_likes_base
             post_share_total = post_share_total + post_share_base
-            print(post_like_total)
         post_loop = post_loop+1
 
     #load apm metrics
@@ -224,10 +220,12 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
 
     #Setup database connection to export page data
     mysqldestination(app, connectiondata, add_pagedata, page_obj)
+    logger.debug('Page data sent' + pagedata["name"])
 
 def fb_getpageidsmysql(app, connectiondata, querylimit):
     """retrieve an list of all unique ids in facebook owned page table"""
     import MySQLdb as mdb
+    from prepmetrics.prepModules.preplogger import applogger
     logger = applogger(app)
 
     fb_pages = None
@@ -254,9 +252,11 @@ def fb_getcommentsentimentmsql(app, pageids, connectiondata, sentapidata):
     from datetime import datetime
     from datetime import timedelta
     import MySQLdb as mdb
-    from prepModules.prepdestinations import mysqldestination
-    from prepModules.prepsentiment import getstringsentiment
+    from prepmetrics.prepModules.preplogger import applogger
+    from prepmetrics.prepModules.prepdestinations import mysqldestination
+    from prepmetrics.prepModules.prepsentiment import getstringsentiment
 
+    logger = applogger(app)
     #cache general variables
     current_date = datetime.now()
     yesterday_date = (current_date - timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
@@ -279,13 +279,11 @@ def fb_getcommentsentimentmsql(app, pageids, connectiondata, sentapidata):
 
         result = cur.fetchall()
         comment_data_set = result
-        for row in result:
-            print(row)
         cur.close()
     con.close()
+    logger.debug('FB unique Page ids retrieved')
 
     for row in comment_data_set:
-        print(row[5])
         if len(row[5]) > 20:
             request_response = getstringsentiment(app, sentapidata, row[5])
             comment_sentiment_data = {

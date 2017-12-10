@@ -1,13 +1,9 @@
-"""top docstring.
-end of discription.
-"""
-from prepModules.preplogger import applogger
+"""all functions for sending data to destination types"""
 
 #destination mySQL
 def mysqldestination(app, connectiondata, insertquery, datatoexport):
-    """function that sends data to a mysql database.
-    end of discription.
-    """
+    """function that sends data to a mysql database"""
+    from prepmetrics.prepModules.preplogger import applogger
     #load mysql if it is not loaded yet
     import MySQLdb as mdb
     logger = applogger(app)
