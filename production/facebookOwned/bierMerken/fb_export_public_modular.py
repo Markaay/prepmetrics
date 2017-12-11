@@ -32,6 +32,7 @@ def fbownedpublicapp():
 
         #retrieve page data json from api
         requestjson = httpjson(APP_NAME, constructedrequest, 30)
+        print(requestjson)
 
         #procus complete public facebook data tables
         fb_ownedpubliccomplete(APP_NAME, requestjson, connectiondata, 10)
