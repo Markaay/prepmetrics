@@ -70,7 +70,7 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
         end = contextdata["yesterday_date"][:10] +" 23:59:59"
         print("end= "+end)
         #execute query with context data
-        que = cur.execute(query, table, (start, end))
+        que = cur.execute(query, (table, start, end))
         if que != 0:
             result = cur.fetchall()
             for row in result:
