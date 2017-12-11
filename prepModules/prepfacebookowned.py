@@ -4,7 +4,7 @@
 
 def fb_httpbuilderpublic(app, pageid, postlimit, commentlimit, likelimit, accesstoken):
     """function that forms the hhtp request url based on input"""
-    from prepmetrics.prepModules.preplogger import applogger
+    from preplogger import applogger
     logger = applogger(app)
     #constructor for exporting public facebook graph api data
     api_base = "https://graph.facebook.com"
@@ -22,7 +22,7 @@ def fb_gettoken(app, app_id, app_secret, data_location):
     """function to retrieve new app access token based on app id and app secret"""
     import json
     import requests
-    from prepmetrics.prepModules.preplogger import applogger
+    from preplogger import applogger
     logger = applogger(app)
     #construct request data
     payload = {
@@ -49,7 +49,7 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
     """function that retrieves amp data from given msql database"""
     #import msqldb if not loaded yet
     import MySQLdb as mdb
-    from prepmetrics.prepModules.preplogger import applogger
+    from preplogger import applogger
     logger = applogger(app)
     #object to return after data is loaded
     apmdata = {
@@ -88,8 +88,8 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
     """export complete social owned stack page,post and comments"""
     from datetime import datetime
     from datetime import timedelta
-    from prepmetrics.prepModules.preplogger import applogger
-    from prepmetrics.prepModules.prepdestinations import mysqldestination
+    from preplogger import applogger
+    from prepdestinations import mysqldestination
 
     logger = applogger(app)
     #cache general variables
@@ -225,7 +225,7 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
 def fb_getpageidsmysql(app, connectiondata, querylimit):
     """retrieve an list of all unique ids in facebook owned page table"""
     import MySQLdb as mdb
-    from prepmetrics.prepModules.preplogger import applogger
+    from preplogger import applogger
     logger = applogger(app)
 
     fb_pages = None
@@ -252,9 +252,9 @@ def fb_getcommentsentimentmsql(app, pageids, connectiondata, sentapidata):
     from datetime import datetime
     from datetime import timedelta
     import MySQLdb as mdb
-    from prepmetrics.prepModules.preplogger import applogger
-    from prepmetrics.prepModules.prepdestinations import mysqldestination
-    from prepmetrics.prepModules.prepsentiment import getstringsentiment
+    from preplogger import applogger
+    from prepdestinations import mysqldestination
+    from prepsentiment import getstringsentiment
 
     logger = applogger(app)
     #cache general variables

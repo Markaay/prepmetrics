@@ -1,7 +1,9 @@
 """jumbo facebook owned public data app"""
 #dependencies
-from prepmetrics.prepModules.prepfacebookowned import fb_getpageidsmysql, fb_getcommentsentimentmsql
-from prepmetrics.prepModules.preploadfile import loadjsonfile
+import sys
+sys.path.append("../../../prepModules")
+from prepfacebookowned import fb_getpageidsmysql, fb_getcommentsentimentmsql
+from preploadfile import loadjsonfile
 
 #prepapp
 APP_NAME = "jumboSocialOwnedSentiment"

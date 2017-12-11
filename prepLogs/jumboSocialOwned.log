@@ -1,0 +1,26 @@
+2017-12-11 19:15:05,328 - DEBUG - preploadfile - json file read
+2017-12-11 19:15:05,330 - DEBUG - preploadfile - json file read
+2017-12-11 19:15:05,330 - DEBUG - preploadfile - json file read
+2017-12-11 19:15:59,825 - DEBUG - preploadfile - json file read
+2017-12-11 19:15:59,826 - DEBUG - preploadfile - json file read
+2017-12-11 19:15:59,826 - DEBUG - preploadfile - json file read
+2017-12-11 19:16:08,573 - DEBUG - preploadfile - json file read
+2017-12-11 19:16:08,587 - DEBUG - preploadfile - json file read
+2017-12-11 19:16:08,587 - DEBUG - preploadfile - json file read
+2017-12-11 19:16:08,588 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/jumbosupermarkten?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 19:16:08,588 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/jumbosupermarkten?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 19:16:08,588 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/jumbosupermarkten?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 19:16:12,857 - DEBUG - prephttp - data collected: json
+2017-12-11 19:16:12,857 - DEBUG - prephttp - data collected: json
+2017-12-11 19:16:12,857 - DEBUG - prephttp - data collected: json
+2017-12-11 19:16:12,857 - DEBUG - prephttp - data collected: json
+2017-12-11 19:19:02,120 - DEBUG - preploadfile - json file read
+2017-12-11 19:19:02,122 - DEBUG - preploadfile - json file read
+2017-12-11 19:19:02,122 - DEBUG - preploadfile - json file read
+2017-12-11 19:19:02,123 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/jumbosupermarkten?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 19:19:02,123 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/jumbosupermarkten?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 19:19:02,123 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/jumbosupermarkten?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 19:19:04,842 - DEBUG - prephttp - data collected: json
+2017-12-11 19:19:04,842 - DEBUG - prephttp - data collected: json
+2017-12-11 19:19:04,842 - DEBUG - prephttp - data collected: json
+2017-12-11 19:19:04,842 - DEBUG - prephttp - data collected: json

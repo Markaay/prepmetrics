@@ -1,8 +1,10 @@
 """jumbo facebook owned public data app"""
 #dependencies
-from prepmetrics.prepModules.prepfacebookowned import fb_httpbuilderpublic, fb_ownedpubliccomplete
-from prepmetrics.prepModules.prephttp import httpjson
-from prepmetrics.prepModules.preploadfile import loadjsonfile
+import sys
+sys.path.append("../../../prepModules")
+from prepfacebookowned import fb_httpbuilderpublic, fb_ownedpubliccomplete
+from prephttp import httpjson
+from preploadfile import loadjsonfile
 
 #prepapp
 APP_NAME = "jumboSocialOwned"
@@ -26,7 +28,7 @@ def fbownedpublicapp():
     for _ in pages_to_scrape:
         #construct request for page data
         constructedrequest = fb_httpbuilderpublic(APP_NAME, pages_to_scrape[page_loop],
-                                                  16, 1500, 6000, accessdata["fb_access_token"])
+                                                  16, 1500, 6000, accessdata["app_access_token"])
 
         #retrieve page data json from api
         requestjson = httpjson(APP_NAME, constructedrequest, 30)

@@ -4,7 +4,7 @@ def httpjson(app, http, timeoutseconds):
     """function that handles all json request in python"""
     import urllib2
     import json
-    from prepmetrics.prepModules.preplogger import applogger
+    from preplogger import applogger
 
     #create logger based on app name
     logger = applogger(app)

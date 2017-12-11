@@ -3,7 +3,7 @@
 #destination mySQL
 def mysqldestination(app, connectiondata, insertquery, datatoexport):
     """function that sends data to a mysql database"""
-    from prepmetrics.prepModules.preplogger import applogger
+    from preplogger import applogger
     #load mysql if it is not loaded yet
     import MySQLdb as mdb
     logger = applogger(app)
