@@ -106,7 +106,7 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
     post_share_total = 0
     post_loop = 0
     #start loop through page posts
-    for _ in pagedata["posts"]["data"]:
+    for x in pagedata["posts"]["data"]:
         #only include pages which creation date is equal to the date 7 days ago (last_week_date)
         if pagedata["posts"]["data"][post_loop]["created_time"][:10] == contextdata["last_week_date"][:10]:
             post_message = ""
@@ -149,7 +149,7 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
                 comment_loop = 0
                 #doublecheck if comment key is in post comment json
                 if "comments" in pagedata["posts"]["data"][post_loop]:
-                    for _ in pagedata["posts"]["data"][post_loop]["comments"]["data"]:
+                    for xx in pagedata["posts"]["data"][post_loop]["comments"]["data"]:
                         #comment data to export
                         post_comment_obj = {
                             "comment_table": connectiondata["comment_table"],
