@@ -8,7 +8,7 @@ def fb_httpbuilderpublic(app, pageid, postlimit, commentlimit, likelimit, access
     logger = applogger(app)
     #constructor for exporting public facebook graph api data
     api_base = "https://graph.facebook.com"
-    api_version = "v2.10"
+    api_version = "v2.11"
     api_page = str(pageid)
     api_post_limit = str(postlimit)
     api_comment_limit = str(commentlimit)
