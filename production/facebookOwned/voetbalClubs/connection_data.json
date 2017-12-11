@@ -4,7 +4,7 @@
     "con_user": "prepper",
     "con_pass": "VMaiQAKSRP",
     "db_name": "admin_prepmetricsdb",
-    "page_table": "bier_fb_pagedata",
-    "post_table": "bier_fb_posts",
-    "comment_table": "bier_fb_comments"
+    "page_table": "voetbal_fb_pagedata",
+    "post_table": "voetbal_fb_posts",
+    "comment_table": "voetbal_fb_comments"
 }

@@ -1,4 +1,4 @@
-"""biermerken facebook owned public data app"""
+"""voetbalclubs facebook owned public data app"""
 #dependencies
 import sys
 sys.path.append("../../../prepModules")
@@ -6,7 +6,7 @@ from prepfacebookowned import fb_getpageidsmysql, fb_getcommentsentimentmsql
 from preploadfile import loadjsonfile
 
 #prepapp
-APP_NAME = "bierMerkenSocialOwnedSentiment"
+APP_NAME = "voetbalSocialOwnedSentiment"
 PY_VERSION = "2.7"
 CREATOR = "prepmetrics"
 

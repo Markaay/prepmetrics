@@ -1,0 +1,40 @@
+2017-12-11 20:48:00,878 - DEBUG - preploadfile - json file read
+2017-12-11 20:48:00,878 - DEBUG - preploadfile - json file read
+2017-12-11 20:48:00,878 - DEBUG - preploadfile - json file read
+2017-12-11 20:48:00,878 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:48:00,878 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:48:00,878 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:48:01,200 - ERROR - prephttp - 400
+2017-12-11 20:48:01,200 - ERROR - prephttp - 400
+2017-12-11 20:48:01,200 - ERROR - prephttp - 400
+2017-12-11 20:48:01,200 - ERROR - prephttp - 400
+2017-12-11 20:51:28,854 - DEBUG - preploadfile - json file read
+2017-12-11 20:51:28,855 - DEBUG - preploadfile - json file read
+2017-12-11 20:51:28,855 - DEBUG - preploadfile - json file read
+2017-12-11 20:51:28,855 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:51:28,855 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:51:28,855 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:51:29,083 - ERROR - prephttp - 400
+2017-12-11 20:51:29,083 - ERROR - prephttp - 400
+2017-12-11 20:51:29,083 - ERROR - prephttp - 400
+2017-12-11 20:51:29,083 - ERROR - prephttp - 400
+2017-12-11 20:59:43,636 - DEBUG - preploadfile - json file read
+2017-12-11 20:59:43,637 - DEBUG - preploadfile - json file read
+2017-12-11 20:59:43,637 - DEBUG - preploadfile - json file read
+2017-12-11 20:59:43,637 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:59:43,637 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:59:43,637 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 20:59:43,872 - ERROR - prephttp - 400
+2017-12-11 20:59:43,872 - ERROR - prephttp - 400
+2017-12-11 20:59:43,872 - ERROR - prephttp - 400
+2017-12-11 20:59:43,872 - ERROR - prephttp - 400
+2017-12-11 21:00:46,754 - DEBUG - preploadfile - json file read
+2017-12-11 21:00:46,755 - DEBUG - preploadfile - json file read
+2017-12-11 21:00:46,755 - DEBUG - preploadfile - json file read
+2017-12-11 21:00:46,755 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 21:00:46,755 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 21:00:46,755 - DEBUG - prepfacebookowned - FB API request constructed: https://graph.facebook.com/v2.10/HeinekenNL?fields=id,name,posts.limit(16){comments.limit(1500){message,id,comment_count,created_time,like_count},caption,likes.limit(6000),timeline_visibility,message,shares,type,created_time},fan_count,talking_about_count,were_here_count&access_token=189107884825866|GAK5u63gwXIlsjijOhxh5iTZeqo
+2017-12-11 21:00:46,984 - ERROR - prephttp - 400
+2017-12-11 21:00:46,984 - ERROR - prephttp - 400
+2017-12-11 21:00:46,984 - ERROR - prephttp - 400
+2017-12-11 21:00:46,984 - ERROR - prephttp - 400
