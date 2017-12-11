@@ -66,9 +66,9 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
                  "WHERE scrape_date BETWEEN %s AND %s")
         table = connectiondata["page_table"]
         start = contextdata["yesterday_date"][:10] +" 00:00:00"
-        print("start= "end)
+        print("start= "+start)
         end = contextdata["yesterday_date"][:10] +" 23:59:59"
-        print("end= "end)
+        print("end= "+end)
         #execute query with context data
         que = cur.execute(query, (table, start, end))
         if que != 0:
