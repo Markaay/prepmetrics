@@ -58,10 +58,11 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
         "page_new_here": 0,
         "page_new_talks": 0
     }
+    yesterday_context = contextdata["yesterday_date"][:10]
     querydata ={
         "table": connectiondata["page_table"],
-        "start": contextdata["yesterday_date"][:10] +" 00:00:00",
-        "end": contextdata["yesterday_date"][:10] +" 23:59:59"
+        "start": yesterday_context +" 00:00:00",
+        "end": yesterday_context +" 23:59:59"
     }
     print(querydata)
 
