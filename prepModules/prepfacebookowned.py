@@ -70,12 +70,13 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
     with con:
         cur = con.cursor()
         query = ("SELECT page_name, page_id, page_fan_count, page_were_here_count, page_talking_about_count FROM " + querydata["table"] + ""
-                 "WHERE scrape_date BETWEEN %s AND %s ")
+                 "WHERE scrape_date BETWEEN %s AND %s "+";")
         print(query)         
         #execute query with context data
         start = querydata["starttime"]
         end = querydata["endtime"]
         que = cur.execute(query, (start, end))
+        print(que)
         if que != 0:
             result = cur.fetchall()
             for row in result:
