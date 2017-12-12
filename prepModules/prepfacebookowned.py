@@ -62,7 +62,7 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
     con = mdb.connect(connectiondata["con_ip"], connectiondata["con_user"], connectiondata["con_pass"], connectiondata["con_db"])
     with con:
         cur = con.cursor()
-        query = ("SELECT page_name, page_id, page_fan_count, page_were_here_count, page_talking_about_count FROM admin_prepmetricsdb.voetbal_fb_pagedata "
+        query = ("SELECT page_name, page_id, page_fan_count, page_were_here_count, page_talking_about_count FROM " + connectiondata["page_table"] + " "
                  "WHERE scrape_date BETWEEN %s AND %s")
         print(query)         
         #execute query with context data
@@ -138,7 +138,7 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
                 "post_share_count": post_share_count
             }
             #post data insert query
-            add_post = ("INSERT INTO %(post_table)s"
+            add_post = ("INSERT INTO " + connectiondata["post_table"] + " " 
                         "(scrape_date, page_id, page_name, post_id, post_type, post_created_time, post_message, post_timeline_visibility, post_comment_count, post_like_count, post_share_count)"
                         "VALUES (%(scrape_date)s, %(page_id)s, %(page_name)s, %(post_id)s, %(post_type)s, %(post_created_time)s, %(post_message)s, %(post_timeline_visibility)s, %(post_comment_count)s, %(post_like_count)s, %(post_share_count)s)")
 
@@ -164,7 +164,7 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
                             "comment_comment_count": pagedata["posts"]["data"][post_loop]["comments"]["data"][comment_loop]["comment_count"],
                         }
                         #comment data insert query
-                        add_comment = ("INSERT INTO %(comment_table)s "
+                        add_comment = ("INSERT INTO " + connectiondata["comment_table"] + " "
                                        "(scrape_date, page_id, post_id, comment_id, comment_created_time, comment_message, comment_like_count, comment_comment_count)"
                                        "VALUES (%(scrape_date)s, %(page_id)s, %(post_id)s, %(comment_id)s, %(comment_created_time)s, %(comment_message)s, %(comment_like_count)s, %(comment_comment_count)s)")
 
@@ -215,7 +215,7 @@ def fb_ownedpubliccomplete(app, pagedata, connectiondata, ipmpostamount):
         "page_new_talks": page_new_talks
     }
     #page data insert query
-    add_pagedata = ("INSERT INTO %(page_table)s "
+    add_pagedata = ("INSERT INTO " + connectiondata["page_table"] + " "
                     "(scrape_date, page_id, page_name, page_fan_count, page_were_here_count, page_talking_about_count, post_like_total, post_comment_total, post_share_total, page_new_fans, page_new_here, page_new_talks)"
                     "VALUES (%(scrape_date)s, %(page_id)s, %(page_name)s, %(page_fan_count)s, %(page_were_here_count)s, %(page_talking_about_count)s, %(post_like_total)s, %(post_comment_total)s, %(post_share_total)s, %(page_new_fans)s, %(page_new_here)s, %(page_new_talks)s)")
 
