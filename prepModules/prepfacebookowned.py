@@ -58,19 +58,21 @@ def fb_ownedpublicapmmetrics(app, pagedata, contextdata, connectiondata):
         "page_new_here": 0,
         "page_new_talks": 0
     }
+    querydata ={
+        "table": connectiondata["page_table"],
+        "start": contextdata["yesterday_date"][:10] +" 00:00:00",
+        "end": contextdata["yesterday_date"][:10] +" 23:59:59"
+    }
+    print(querydata)
+
     #setup connection
     con = mdb.connect(connectiondata["con_ip"], connectiondata["con_user"], connectiondata["con_pass"], connectiondata["con_db"])
     with con:
         cur = con.cursor()
         query = ("SELECT page_name,page_id, page_fan_count, page_were_here_count, page_talking_about_count FROM %(table)s "
                  "WHERE scrape_date BETWEEN %(start)s AND %(end)s")
-        table = connectiondata["page_table"]
-        start = contextdata["yesterday_date"][:10] +" 00:00:00"
-        print("start= "+start)
-        end = contextdata["yesterday_date"][:10] +" 23:59:59"
-        print("end= "+end)
         #execute query with context data
-        que = cur.execute(query, (table, start, end))
+        que = cur.execute(query, querydata)
         if que != 0:
             result = cur.fetchall()
             for row in result:
