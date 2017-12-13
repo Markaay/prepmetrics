@@ -26,10 +26,10 @@ def fbownedpublicapp():
     for page in pages_to_scrape:
         #construct request for page data
         constructedrequest = fb_httpbuilderpublic(APP_NAME, pages_to_scrape[page_loop],
-                                                  16, 1500, 6000, accessdata["app_access_token"])
+                                                  50, 1500, 6000, accessdata["app_access_token"])
         print(constructedrequest)
         #retrieve page data json from api
-        requestjson = httpjson(APP_NAME, constructedrequest, 30)
+        requestjson = httpjson(APP_NAME, constructedrequest, 40)
         print(requestjson)
 
         #procus complete public facebook data tables
