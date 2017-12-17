@@ -9,7 +9,7 @@ from preploadfile import loadjsonfile
 APP_NAME = "voetbalSocialOwned"
 PY_VERSION = "2.7"
 CREATOR = "prepmetrics"
-ABSOLUTE_PATH = "/home/admin/prepmetrics/prepmetrics/facebookOwned/voetbalClubs/"
+ABSOLUTE_PATH = "/home/admin/prepmetrics/prepmetrics/production/facebookOwned/voetbalClubs/"
 
 def fbownedpublicapp():
     """python function that exports all public owned data"""
