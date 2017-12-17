@@ -3,27 +3,20 @@
 import json
 from prepfacebookowned import fb_httpbuilderpublic, fb_ownedpubliccomplete
 from prephttp import httpjson
+from preploadfile import loadjsonfile
 
 #prepapp
 APP_NAME = "voetbalSocialOwned"
 PY_VERSION = "2.7"
 CREATOR = "prepmetrics"
+ABSOLUTE_PATH = "/home/admin/prepmetrics/prepmetrics/facebookOwned/voetbalClubs/"
 
 def fbownedpublicapp():
     """python function that exports all public owned data"""
-
-    #Open local json files
-    def loadjsonfile(jsonpath):
-        """function that reads the json path and returns it to the app"""
-        #Open access_data.json file
-        with open(jsonpath, 'r') as filedata:
-            jsondata = json.load(filedata)
-        return jsondata
-
     #Open access_data.json file
-    accessdata = loadjsonfile("access_data.json")
+    accessdata = loadjsonfile(APP_NAME, ABSOLUTE_PATH + "access_data.json")
     #Database connection info
-    connectiondata = loadjsonfile("connection_data.json")
+    connectiondata = loadjsonfile(APP_NAME, ABSOLUTE_PATH + "connection_data.json")
 
     #pages to scrape
     pages_to_scrape = ["afcajax", "PSV", "feyenoord",
