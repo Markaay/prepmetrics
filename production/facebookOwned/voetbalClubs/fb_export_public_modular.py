@@ -9,16 +9,17 @@ APP_NAME = "voetbalSocialOwned"
 PY_VERSION = "2.7"
 CREATOR = "prepmetrics"
 
-#Open local json files
-def loadjsonfile(jsonpath):
-    """function that reads the json path and returns it to the app"""
-    #Open access_data.json file
-    with open(jsonpath, 'r') as filedata:
-        jsondata = json.load(filedata)
-    return jsondata
-
 def fbownedpublicapp():
     """python function that exports all public owned data"""
+
+    #Open local json files
+    def loadjsonfile(jsonpath):
+        """function that reads the json path and returns it to the app"""
+        #Open access_data.json file
+        with open(jsonpath, 'r') as filedata:
+            jsondata = json.load(filedata)
+        return jsondata
+
     #Open access_data.json file
     accessdata = loadjsonfile("access_data.json")
     #Database connection info
