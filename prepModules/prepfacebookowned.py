@@ -1,7 +1,7 @@
 """all functions for retrieving owned facebook data through the facebook graph api"""
 #classes for public facebook owned data and private owned page data
 
-def fb_httpbuilderpublic(pageid, postlimit, commentlimit, likelimit, accesstoken):
+def fb_httpbuilderpublic(app, pageid, postlimit, commentlimit, likelimit, accesstoken):
     """function that forms the hhtp request url based on input"""
     #constructor for exporting public facebook graph api data
     api_base = "https://graph.facebook.com"
