@@ -1,5 +1,5 @@
 """functions that retrieve info from http sources"""
-#Get JSON
+#Get JSON w
 def httpjson(app, http, timeoutseconds):
     """function that handles all json request in python"""
     import urllib2
