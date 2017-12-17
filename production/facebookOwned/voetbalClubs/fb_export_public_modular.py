@@ -1,25 +1,37 @@
 """voetbalclubs facebook owned public data app"""
 #dependencies
-import sys
-sys.path.append("../../../prepModules")
+import json
 from prepfacebookowned import fb_httpbuilderpublic, fb_ownedpubliccomplete
 from prephttp import httpjson
-from preploadfile import loadjsonfile
 
 #prepapp
 APP_NAME = "voetbalSocialOwned"
 PY_VERSION = "2.7"
 CREATOR = "prepmetrics"
 
+#Open local json files
+def loadjsonfile(jsonpath):
+    """function that reads the json path and returns it to the app"""
+    #Open access_data.json file
+    with open(jsonpath, 'r') as filedata:
+        jsondata = json.load(filedata)
+    return jsondata
+
 def fbownedpublicapp():
     """python function that exports all public owned data"""
     #Open access_data.json file
-    accessdata = loadjsonfile(APP_NAME, "access_data.json")
+    accessdata = loadjsonfile("access_data.json")
     #Database connection info
-    connectiondata = loadjsonfile(APP_NAME, "connection_data.json")
+    connectiondata = loadjsonfile("connection_data.json")
 
     #pages to scrape
-    pages_to_scrape = ["afcajax", "PSV", "feyenoord"]
+    pages_to_scrape = ["afcajax", "PSV", "feyenoord",
+                       "AZAlkmaar", "FCUtrecht1970", "ADODenHaag",
+                       "peczwolle", "VitesseArnhem", "scheerenveen",
+                       "HeraclesAlmelo", "VVV.Venlo", "FCGroningen",
+                       "excelsiorrdam", "WillemIITilburg", "FCTwente",
+                       "NACnl", "SpartaRotterdam", "RodaJCKerkrade",
+                       "NECNijmegen"]
     page_loop = 0
 
     #loop through pages in array
