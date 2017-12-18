@@ -1,0 +1,10 @@
+{
+    "con_ip": "198.199.126.183",
+    "con_db": "admin_prepmetricsdb",
+    "con_user": "prepper",
+    "con_pass": "VMaiQAKSRP",
+    "db_name": "admin_prepmetricsdb",
+    "con_full_table": "friet_sc_full",
+    "con_full_lp": "friet_sc_lp",
+    "con_full_query": "friet_sc_query"
+}
