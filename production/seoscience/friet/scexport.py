@@ -39,4 +39,4 @@ def main():
     seoscienceapp()
 
 if __name__ == '__main__':
-  main()
+    main()
