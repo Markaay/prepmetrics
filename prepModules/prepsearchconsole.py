@@ -20,7 +20,7 @@ def sc_full_export(app, webmasters_service, sc_url, connectiondata, scdate):
     from prepdestinations import mysqldestination
 
     #Add complete set of data to *sc_full table
-    add_full = ("INSERT INTO " + connectiondata["friet_sc_full"] + " "
+    add_full = ("INSERT INTO " + connectiondata["con_full_table"] + " "
 	             "(sc_date, query, landing_page, device, country, impressions, clicks, ctr, position)"
 	             "VALUES (%(sc_date)s, %(query)s, %(landing_page)s, %(device)s, %(country)s, %(impressions)s, %(clicks)s, %(ctr)s, %(position)s)")
 
