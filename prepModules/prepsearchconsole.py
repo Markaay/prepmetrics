@@ -78,15 +78,14 @@ def sc_lp_export(app, webmasters_service, sc_url, connectiondata, scdate):
     for row in query_data_response["rows"]:
         sc_lp = {
             "sc_date": scdate,
-            "query": row["keys"][0],
-            "landing_page": row["keys"][1],
-            "device": row["keys"][2],
-            "country": row["keys"][3],
+            "landing_page": row["keys"][0],
+            "device": row["keys"][1],
+            "country": row["keys"][2],
             "impressions": row["impressions"],
             "clicks": row["clicks"],
             "ctr": row["ctr"],
             "position": row["position"]
         }
-        print(sc_full)  
+        print(sc_lp)  
         #push to database
         mysqldestination(app, connectiondata, add_lp, sc_lp)
