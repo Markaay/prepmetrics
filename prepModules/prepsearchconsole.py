@@ -15,77 +15,56 @@ def sc_initsearchconsole(app, scope, secrets):
 
     return webmasters_service
 
-def sc_full_export(app, webmasters_service, sc_url, connectiondata, scdate):
+def sc_full_export(app, sc_url, searchconsole, querydate, searchtype, startrow):
     """get complete search console report"""
-    from prepdestinations import mysqldestination
-
-    #Add complete set of data to *sc_full table
-    add_full = ("INSERT INTO " + connectiondata["con_full_table"] + " "
-	             "(sc_date, query, landing_page, device, country, impressions, clicks, ctr, position)"
-	             "VALUES (%(sc_date)s, %(query)s, %(landing_page)s, %(device)s, %(country)s, %(impressions)s, %(clicks)s, %(ctr)s, %(position)s)")
 
     #data for request
     query_data_request = {
-        'startDate': scdate,
-        'endDate': scdate,
-        'dimensions': ['query', 'page', 'device', 'country'],
-        #'rowLimit': 5000
+        'startDate': querydate,
+        'endDate': querydate,
+        'dimensions': ['date', 'query', 'page', 'device', 'country'],
+        'rowLimit': 5000,
+        'startRow': startrow,
+        'searchType': searchtype
     }
     #execute query to api
-    query_data_response = webmasters_service.searchanalytics().query(
+    query_data_response = searchconsole.searchanalytics().query(
         siteUrl=sc_url, body=query_data_request).execute()
     print(query_data_response)
 
     #sent data to destination
-    for row in query_data_response["rows"]:
-        sc_full = {
-            "sc_date": scdate,
-            "query": row["keys"][0],
-            "landing_page": row["keys"][1],
-            "device": row["keys"][2],
-            "country": row["keys"][3],
-            "impressions": row["impressions"],
-            "clicks": row["clicks"],
-            "ctr": row["ctr"],
-            "position": row["position"]
-        }
-        print(sc_full)  
-        #push to database
-        mysqldestination(app, connectiondata, add_full, sc_full)
+    return query_data_response
 
-def sc_lp_export(app, webmasters_service, sc_url, connectiondata, scdate):
+def sc_lp_export(app, sc_url, searchconsole, querydate, searchtype, startrow):
     """get complete search console report"""
-    from prepdestinations import mysqldestination
-
-    #Add complete set of data to *sc_full table
-    add_lp = ("INSERT INTO " + connectiondata["con_full_lp"] + " "
-	             "(sc_date, landing_page, device, country, impressions, clicks, ctr, position)"
-	             "VALUES (%(sc_date)s, %(landing_page)s, %(device)s, %(country)s, %(impressions)s, %(clicks)s, %(ctr)s, %(position)s)")
-
-    #data for request
     query_data_request = {
-        'startDate': scdate,
-        'endDate': scdate,
-        'dimensions': ['page', 'device', 'country'],
-        #'rowLimit': 5000
+        'startDate': querydate,
+        'endDate': querydate,
+        'dimensions': ['date', 'page', 'device', 'country'],
+        'rowLimit': 5000,
+        'startRow': startrow,
+        'searchType': searchtype
     }
-    #execute query to api
-    query_data_response = webmasters_service.searchanalytics().query(
-        siteUrl=sc_url, body=query_data_request).execute()
-    print(query_data_response)
 
+    query_data_response = searchconsole.searchanalytics().query(
+        siteUrl=sc_url, body=query_data_request).execute()
+    
     #sent data to destination
-    for row in query_data_response["rows"]:
-        sc_lp = {
-            "sc_date": scdate,
-            "landing_page": row["keys"][0],
-            "device": row["keys"][1],
-            "country": row["keys"][2],
-            "impressions": row["impressions"],
-            "clicks": row["clicks"],
-            "ctr": row["ctr"],
-            "position": row["position"]
-        }
-        print(sc_lp)  
-        #push to database
-        mysqldestination(app, connectiondata, add_lp, sc_lp)
+    return query_data_response
+
+def sc_query_export(app, sc_url, searchconsole, querydate, searchtype, startrow):
+    """get complete search console report"""
+    query_data_request = {
+        'startDate': querydate,
+        'endDate': querydate,
+        'dimensions': ['date', 'query', 'device', 'country'],
+        'rowLimit': 5000,
+        'startRow': startrow,
+        'searchType': searchtype
+    }
+
+    query_data_response = searchconsole.searchanalytics().query(
+        siteUrl=sc_url, body=query_data_request).execute()
+    
+    #sent data to destination
+    return query_data_response

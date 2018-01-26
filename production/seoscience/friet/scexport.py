@@ -13,6 +13,10 @@ ABSOLUTE_PATH = "/home/admin/prepmetrics/prepmetrics/production/seoscience/friet
 SCOPES = ['https://www.googleapis.com/auth/webmasters.readonly']
 SC_URL = "http://www.friet-enzo.nl/"
 
+LOOPSTART = 0
+REPEATLOOP = True
+searchtypes = ["web", "image", "video"]
+
 def seoscienceapp():
     """app to retrieve datasets"""
     #Database connection info
@@ -28,10 +32,18 @@ def seoscienceapp():
     #Initialize the search console api
     webmasters_service = sc_initsearchconsole(APP_NAME, SCOPES, clientsecrets)
 
-    #get full sc report
-    sc_full_export(APP_NAME, webmasters_service, SC_URL, connectiondata, delaydate)
+    #get data and loop through searchtypes
+    for typing in searchtypes:
+        LOOPSTART = 0
+        full_data = sc_full_export(APP_NAME, SC_URL, webmasters_service, delaydate, typing, LOOPSTART)
+        if 'rows' in full_data:
+            if len(full_data["rows"]) > 4999:
+                LOOPSTART = LOOPSTART + 5000
+        
 
-    sc_lp_export(APP_NAME, webmasters_service, SC_URL, connectiondata, delaydate)
+    
+    
+    sc_lp_export(APP_NAME, SC_URL, webmasters_service, delaydate, typing, 0)
 
 
 def main():
